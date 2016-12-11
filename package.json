@@ -1,7 +1,7 @@
 {
-  "name": "javascript-development-environment",
+  "name": "jwt",
   "version": "1.0.0",
-  "description": "JavaScript development environment Pluralsight course by Cory House",
+  "description": "java web tokens",
   "scripts": {
     "prestart": "babel-node buildScripts/startMessage.js",
     "start": "npm-run-all --parallel security-check open-src lint-watch test-watch start-mockapi",
@@ -20,11 +20,14 @@
     "prebuild": "npm-run-all clean-dist test lint",
     "build": "babel-node buildScripts/build.js",
     "postbuild": "babel-node buildScripts/distServer.js",
-    "deploy":"surge ./dist"
+    "deploy": "surge ./dist"
   },
   "author": "Alex Lerner",
   "license": "MIT",
   "dependencies": {
+    "angular": "^1.5.9",
+    "angular-ui-router": "^0.3.2",
+    "bootstrap": "^3.3.7",
     "whatwg-fetch": "1.0.0"
   },
   "devDependencies": {

@@ -22,6 +22,7 @@ app.get('/', function(req, res) {
 
 app.get('/users', function(req, res) {
     // hardcoding as a starting point
+    console.log("returning hardcoded data from the srcServer app.get");
     res.json([
         {"id": 1, "firstName":"Bob", "lastName":"Smith", "email":"bob@gmail.com"},
         {"id": 2, "firstName":"Tammy", "lastName":"Norton", "email":"tnorton@gmail.com"},

@@ -3,7 +3,7 @@
     // emerging standard for making http calls library
     // what working group fetch
     import 'whatwg-fetch';
-    import getBaseUrl from './baseUrl'; //  is it dev or prod?  
+    import getBaseUrl from './baseUrl'; //  is it dev or prod?
 
     const baseUrl = getBaseUrl();
 
@@ -13,7 +13,7 @@
     }
 
     export function deleteUser(id) {
-        // this substitutes id into the Url 
+        // this substitutes id into the Url
         return del(`users/${id}`);
     }
 

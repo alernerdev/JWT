@@ -1,6 +1,9 @@
 'use strict'
 
 import './index.css'
+import 'angular'
+import './app.js'
+import './controllers/main.js'
 
 import numeral from 'numeral';
 

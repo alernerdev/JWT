@@ -4,28 +4,47 @@
     htmlWebpackPlugin wiull dynamically add references to the scripts and styles that it bundles
     to this file.  The generated bundles have hash-based filenames, so its necessary to add references dynamically.
 -->
-
 <!DOCTYPE html>
 <html lang='en'>
+
 <head>
-    <% if (htmlWebpackPlugin.options.trackJSToken) { %> 
+    <% if (htmlWebpackPlugin.options.trackJSToken) { %>
         <!-- TRACKJS -->
         <!-- this requires a signup on their web site and costs money -->
-        <script type="text/javascript">window._trackJs = {token: '<%=htmlWebpackPlugin.options.trackJSToken%>'};</script>    
-        <script type="text/javascript" src = "https://cdn.trackjs.com/releases/current/tracker.js"></script>
+        <script type="text/javascript">window._trackJs = {token: '<%=htmlWebpackPlugin.options.trackJSToken%>'};</script>
+        <script type="text/javascript" src="https://cdn.trackjs.com/releases/current/tracker.js"></script>
         <!-- TRACKJS -->
-    <% } %>
-
-    <meta charset="utf-8">
-
-    <!-- this figures out if a particular browser needs a polyfill sent to it for the fetch
+        <% } %>
+            <meta charset="utf-8">
+            <!-- this figures out if a particular browser needs a polyfill sent to it for the fetch
     feature I am using (making REST API calls
     -->
-    <script src='https://cdn.polyfill.io/v2/polyfill.js?features=fetch'></script>
-
+            <script src='https://cdn.polyfill.io/v2/polyfill.js?features=fetch'></script>
 </head>
-<body>
+
+<body ng-app="jwtApp">
+    <div class="container">
+        <div class="header">
+            <ul class="nav nav-pills pull-right">
+                <li class="acitve">
+                    <a ng-ref="#"></a>
+                </li>
+                <li>
+                    <a ng-ref="#">Contacts</a>
+                </li>
+                <li>
+                    <a ng-ref="#/register">Register</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </div>
     <h1>Hello World!</h1>
+    <div ng-include="'views/main.html'" ng-controller="mainController"></div>
+
+    <div class="footer">
+        <p><span class="glyphicon glyphicon-heart" ></span>hey there</p>
+    </div>
 
     <h2>Users</h2>
     <table>
@@ -37,8 +56,8 @@
             <th>Email</th>
         </thead>
         <tbody id='users'>
-
         </tbody>
-     <table/>
+        <table/>
 </body>
+
 </html>

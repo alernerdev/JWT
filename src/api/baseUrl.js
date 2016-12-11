@@ -3,7 +3,7 @@ export default function getBaseUrl() {
     //return inDevelopment ? 'http://localhost:3001/' : '/';
 
     // return getQueryStringParameterByName('useMockApi') ? 'http://localhost:3001/' : '/';
-    return getQueryStringParameterByName('useMockApi') ? 'http://localhost:3001/' : 'https://lit-everglades-48908.herokuapp.com/'; 
+    return getQueryStringParameterByName('useMockApi') ? 'http://localhost:3001/' : 'https://lit-everglades-48908.herokuapp.com/';
 }
 
 function getQueryStringParameterByName(name, url) {

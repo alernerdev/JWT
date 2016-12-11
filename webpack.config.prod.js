@@ -18,7 +18,7 @@ export default {
     noInfo: false, // shows whats being bundled
 
     entry: {
-        vendor: path.resolve(__dirname, 'src/vendor'), 
+        vendor: path.resolve(__dirname, 'src/vendor'),
         main: path.resolve(__dirname, 'src/index') // application entry point
     },
     target: 'web', // or node or electron
@@ -64,12 +64,12 @@ export default {
             // Properties you define here will be available in index.html
             // using htmlWebpackPlugin.options.varName
             // webpack supports various html templating languages.  By default, its EJS -- embedded JS
-            trackJSToken: "tracJS assigned token goes here" 
+            trackJSToken: "tracJS assigned token goes here"
         }),
 
         // eliminate duplicate packages when generating bundle
         new webpack.optimize.DedupePlugin(),
-        
+
         // minify js
         new webpack.optimize.UglifyJsPlugin()
     ],

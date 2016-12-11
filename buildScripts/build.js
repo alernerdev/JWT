@@ -1,4 +1,4 @@
-// Production Build file 
+// Production Build file
 
 /* eslint-disable no-console */
 import webpack from 'webpack';
