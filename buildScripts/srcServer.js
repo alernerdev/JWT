@@ -20,6 +20,12 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, '../src/index.html'));
 })
 
+// Serve the views folder
+app.get('/views/:view', function(req, res) {
+    console.log(req.params.view);
+    res.sendFile(path.join(__dirname, '../src/views/' + req.params.view));
+})
+
 app.get('/users', function(req, res) {
     // hardcoding as a starting point
     console.log("returning hardcoded data from the srcServer app.get");
