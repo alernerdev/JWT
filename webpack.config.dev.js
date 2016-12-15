@@ -12,9 +12,9 @@ export default {
     devtool: 'inline-source-map',
 
     noInfo: false, // shows whats being bundled
-    entry: [
-        path.resolve(__dirname, 'src/index') // application entry point
-    ],
+    entry: {
+        main: path.resolve(__dirname, 'src/index') // application entry point
+    },
     target: 'web', // or node or electron
     output: {
         // where to generate files

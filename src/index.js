@@ -1,9 +1,18 @@
 'use strict'
 
-import './index.css'
-import 'angular'
-import './app.js'
-import './controllers/main.js'
+import $ from 'jquery';
+import jQuery from 'jquery';
+window.$ = $;
+window.jQuery = jQuery;
+
+import 'angular';
+import 'angular-ui-router';
+
+import 'bootstrap';
+
+import './index.css';
+import './app.js';
+import './controllers/main.js';
 
 import numeral from 'numeral';
 

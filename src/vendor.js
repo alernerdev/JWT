@@ -10,4 +10,5 @@ Any files that arent listed here will be bundled into main.js for the production
 
 /* eslint-disable no-unused-vars */
 import fetch from 'whatwg-fetch';
-import 'angular';
+import 'angular'
+import 'angular-ui-router'

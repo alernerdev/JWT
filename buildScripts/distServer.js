@@ -17,6 +17,12 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, '../dist/index.html'));
 })
 
+// Serve the views folder
+app.get('/views/:view', function(req, res) {
+    console.log(req.params.view);
+    res.sendFile(path.join(__dirname, '../src/views/' + req.params.view));
+})
+
 /*
 
 if  we are hitting heroku, this isnt needed
