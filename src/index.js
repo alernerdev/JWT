@@ -1,16 +1,11 @@
 'use strict'
 
-import $ from 'jquery';
-import jQuery from 'jquery';
-window.$ = $;
-window.jQuery = jQuery;
-
 import 'angular';
 import 'angular-ui-router';
 
-import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+//import './index.css';
 
-import './index.css';
 import './app.js';
 import './controllers/main.js';
 

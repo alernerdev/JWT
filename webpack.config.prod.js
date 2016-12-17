@@ -27,7 +27,7 @@ export default {
         // but actually no files will be generated and they are served from memory
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/',
-        filename: '[name].[chunkhash].js'   // will be created dynamically. name here is either 'main'' or 'vendor'' from higher up
+        filename: '[name].[chunkhash].js' // will be created dynamically. name here is either 'main'' or 'vendor'' from higher up
     },
     plugins: [
         // Generate an external css file with a hash in the filename
@@ -50,7 +50,7 @@ export default {
             template: 'src/index.html',
             minify: {
                 removeComments: true,
-                collapseWhitespace:true,
+                collapseWhitespace: true,
                 removeRedundantAttibutes: true,
                 useShortDoctype: true,
                 removeEmptyAttributes: true,
@@ -75,10 +75,25 @@ export default {
     ],
     module: {
         // tell webpack what filetypes to handle
-        loaders: [
-            {test: /\.js$/, exclude: /node_modules/, loaders: ['babel']},
+        loaders: [{
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loaders: ['babel']
+            },
             //{test: /\.css$/, loaders: ['style', 'css']}
-            {test: /\.css$/, loader: ExtractTextPlugin.extract('css?sourceMap')}
+            {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract('css?sourceMap')
+            }, {
+                test: /\.png$/,
+                loader: 'url-loader?limit=100000'
+            }, {
+                test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+            }, {
+                test: /\.(ttf|otf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?|(jpg|gif)$/,
+                loader: 'file-loader'
+            }
         ]
     }
 }
