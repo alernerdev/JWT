@@ -11,55 +11,46 @@
     <% if (htmlWebpackPlugin.options.trackJSToken) { %>
         <!-- TRACKJS -->
         <!-- this requires a signup on their web site and costs money -->
-        <script type="text/javascript">window._trackJs = {token: '<%=htmlWebpackPlugin.options.trackJSToken%>'};</script>
+        <script type="text/javascript">
+            window._trackJs = {
+                token: '<%=htmlWebpackPlugin.options.trackJSToken%>'
+            };
+
+        </script>
         <script type="text/javascript" src="https://cdn.trackjs.com/releases/current/tracker.js"></script>
         <!-- TRACKJS -->
         <% } %>
-
-    <meta charset="utf-8">
-
-    <!-- this figures out if a particular browser needs a polyfill sent to it for the fetch
+            <meta charset="utf-8">
+            <!-- this figures out if a particular browser needs a polyfill sent to it for the fetch
     feature I am using (making REST API calls
     -->
-     <script src='https://cdn.polyfill.io/v2/polyfill.js?features=fetch'></script>
+            <script src='https://cdn.polyfill.io/v2/polyfill.js?features=fetch'></script>
 </head>
 
 <body ng-app="jwtApp">
-    <div class="container">
+    <div class="container" ng-cloak>
         <div class="header">
             <ul class="nav nav-pills pull-right">
-                <li class="acitve">
-                    <a ng-ref="#"></a>
+                <li ui-sref-active="active">
+                    <a ui-sref="main">Home</a>
                 </li>
-                <li>
-                    <a ng-ref="#">Contacts</a>
-                </li>
-                <li>
-                    <a ng-ref="#/register">Register</a>
+                <li ui-sref-active="active">
+                    <a ui-sref="register">Register</a>
                 </li>
             </ul>
+            <h3 class="text-muted">Javascript Web Tokens</h3>
+        </div>
+
+        <div class="row">
+            <div class="ui-view-container">
+                <div ui-view></div>
+            </div>
+        </div>
+
+        <div class="footer">
+
         </div>
     </div>
-    </div>
-    <h1>Hello World!</h1>
-    <div ng-include="'views/main.html'" ng-controller="mainController"></div>
-
-    <div class="footer">
-        <p><span class="glyphicon glyphicon-heart" ></span>hey there</p>
-    </div>
-
-    <h2>Users</h2>
-    <table>
-        <thead>
-            <th>&nbsp;</th>
-            <th>Id</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-        </thead>
-        <tbody id='users'>
-        </tbody>
-        <table/>
 </body>
 
 </html>
