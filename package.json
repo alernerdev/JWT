@@ -27,6 +27,7 @@
   "dependencies": {
     "angular": "^1.5.9",
     "angular-ui-router": "^0.3.2",
+    "animate.css": "^3.5.2",
     "bootstrap": "^3.3.7",
     "whatwg-fetch": "1.0.0"
   },

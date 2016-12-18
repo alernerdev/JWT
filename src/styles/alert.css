@@ -1,0 +1,7 @@
+.main-alert {
+    max-width: 400px;
+    margin: 0 auto;
+}
+.alert-hidden {
+    visibility: hidden;
+}
