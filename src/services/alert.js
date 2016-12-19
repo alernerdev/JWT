@@ -2,7 +2,13 @@
     'use strict';
 
     function alert($rootScope, $timeout) {
+
+        var alertTimeout;
+
         return function (type, title, message, timeout) {
+
+            console.log("got inside the alert service");
+
             $rootScope.alert = {
                 hasBeenShown: true,
                 show: true,
@@ -11,13 +17,12 @@
                 title: title
             };
 
-            var alertTimeout = $timeout(function () {
+            $timeout.cancel(alertTimeout);
+            alertTimeout = $timeout(function () {
+                console.log("got inside the alrt timeout");
                 $rootScope.alert.show = false;
             }, timeout || 2000);
-
-            $timeout.cancel(alertTimeout);
         }
-
     }
 
     var app = angular.module('jwtApp');
