@@ -5,7 +5,7 @@ import 'angular-ui-router';
 
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.paper.min.css'; // theme
-import 'animate.css/animate.min.css';
+import 'animate.css/animate.css';
 
 import './styles/index.css';
 import './styles/alert.css';
@@ -14,7 +14,7 @@ import './app.js';
 import './app.config.js'
 
 import './controllers/register.js';
-import './services/alert.js';
+import './services/alertSvc.js';
 import './directives/validateEquals.js';
 
 import numeral from 'numeral';

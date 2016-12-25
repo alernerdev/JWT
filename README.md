@@ -1,6 +1,9 @@
-# js-dev-env
+# JWT - Javascript Web Tokens
 
-This is a starting point setup for a Javascript project.  Covers all aspects of the standard boilerplate.
+This project is a tutorial on getting JWT working as shown on the Pluralsight course, 
+but I have made changes along the way to stay within the javascript environment guidelines as shown
+in pluralsight javascript dev environment course.
+
 The choices made on this project are:
 
 - ES6 with Babel

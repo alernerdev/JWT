@@ -1,0 +1,17 @@
+.main-alert {
+    max-width: 400px;
+    margin: 0 auto;
+}
+.alert-hidden {
+    visibility: hidden;
+}
+
+.alert-success {
+    color: black;
+    text-align: center;
+}
+.alert-warning {
+    color: crimson;
+    text-align: center;
+}
+

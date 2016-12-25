@@ -14,5 +14,5 @@ import 'angular';
 import 'angular-ui-router';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.paper.min.css'; // theme
-import 'animate.css/source/animate.min.css'
+import 'animate.css/animate.min.css'
 
