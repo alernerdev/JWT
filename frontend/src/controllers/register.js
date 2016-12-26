@@ -4,8 +4,11 @@
     function registerController($scope, $http, alertSvc) {
 
         $scope.submit = function () {
-            var url = "/";
-            var user = {}
+            var url = "http://localhost:4000/register";
+            var user = {
+                email: $scope.email,
+                password: $scope.password
+            }
 
             console.log("click on submit inside register controller");
             $http.post(url, user)
