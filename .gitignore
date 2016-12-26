@@ -41,3 +41,5 @@ jspm_packages
 # anything thats in the dist folder was built on the fly for production build
 dist
 
+# DB data folders
+.\api\dbdata
