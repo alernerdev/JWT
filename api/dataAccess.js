@@ -5,6 +5,7 @@
 
     var mongoClient = require('mongodb').MongoClient;
     var chalk = require('chalk');
+    var User = require('./user');
 
     var collectionName = 'users';
     var collection = null;
@@ -47,7 +48,7 @@
                         throw err;
                     }
 
-                    callback(null, result.ops[0]);
+                    callback(null, new User(result.ops[0].email, result.ops[0].password, result.ops[0]._id));
                 });
             });
         });

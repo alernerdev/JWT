@@ -13,6 +13,6 @@ import fetch from 'whatwg-fetch';
 import 'angular';
 import 'angular-ui-router';
 //import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/css/bootstrap.paper.min.css'; // theme
+import 'bootstrap/dist/css/bootstrap.paper.min.css';
 import 'animate.css/animate.min.css'
 
