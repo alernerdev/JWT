@@ -4,6 +4,8 @@ This project is a tutorial on getting JWT working as shown on the Pluralsight co
 but I have made changes along the way to stay within the javascript environment guidelines as shown
 in pluralsight javascript dev environment course.
 
+## Frontend
+
 The choices made on this project are:
 
 - ES6 with Babel
@@ -26,4 +28,8 @@ The choices made on this project are:
 - webpack and plugins
 - separate dev and prod configurations
 - separation of vendor and app code into separate bundles (with dynamic hash tagged names for cache busting)
+
+## backend
+
+- instead of using Mongoose for data access as demonstrated in the class, stripped it out and used plain MongoDB
 

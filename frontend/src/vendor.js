@@ -12,6 +12,7 @@ Any files that arent listed here will be bundled into main.js for the production
 import fetch from 'whatwg-fetch';
 import 'angular';
 import 'angular-ui-router';
+import 'angular-animate';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.paper.min.css';
 import 'animate.css/animate.min.css'

@@ -1,19 +1,19 @@
 (function() {
     'use strict';
 
-    function registerController($scope, $http, alertSvc, authTokenFactory) {
+    function registerController($scope, $http, alertSvc, authTokenFactory, API_URL) {
 
         $scope.submit = function() {
-            var url = "http://localhost:4000/register";
             var user = {
                 email: $scope.email,
                 password: $scope.password
             }
 
             console.log("click on submit inside register controller");
-            $http.post(url, user).
+            $http.post(API_URL + '/register', user).
                 then(function(res) {
-                  alertSvc("success", "OK!", "You are now registered");
+
+                  alertSvc("success", "Account created!", "Welcome, " + res.data.user.email + "!");
                   // token came back from the backend
                   authTokenFactory.setToken(res.token);
             }, function(err) {
@@ -23,5 +23,5 @@
     }
 
     var app = angular.module('jwtApp');
-    app.controller('registerController', ['$scope', '$http', 'alertSvc', 'authTokenFactory', registerController]);
+    app.controller('registerController', ['$scope', '$http', 'alertSvc', 'authTokenFactory', 'API_URL', registerController]);
 })();
