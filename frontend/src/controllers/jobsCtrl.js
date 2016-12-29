@@ -5,7 +5,7 @@
 
         $http.get(API_URL + '/jobs')
             .then(function(res) {
-                $scope.jobs = res;
+                $scope.jobs = res.data;
             },
             function(err) {
                 // response from backend is an object containing a message field

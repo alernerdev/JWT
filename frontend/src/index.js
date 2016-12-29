@@ -18,6 +18,8 @@ import './controllers/registerCtrl.js';
 import './controllers/headerCtrl.js';
 import './controllers/logoutCtrl.js';
 import './controllers/jobsCtrl.js';
+import './controllers/loginCtrl.js';
+
 
 import './services/alertSvc.js';
 import './services/authTokenFactory.js';

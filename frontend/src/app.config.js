@@ -15,6 +15,11 @@
                 templateUrl: '/views/register.html',
                 controller: 'registerController'
             })
+            .state('login', {
+                url: '/login',
+                templateUrl: '/views/login.html',
+                controller: 'loginController'
+            })
             .state('jobs', {
                 url: '/jobs',
                 templateUrl: '/views/jobs.html',

@@ -15,9 +15,9 @@
 
                   alertSvc("success", "Account created!", "Welcome, " + res.data.user.email + "!");
                   // token came back from the backend
-                  authTokenFactory.setToken(res.token);
+                  authTokenFactory.setToken(res.data.token);
             }, function(err) {
-                 alertSvc("warning", "Oops!", "Could not register");
+                 alertSvc("warning", "Could not register", err ? err.data.message : "");                     
             });
         }
     }

@@ -1,0 +1,7 @@
+<!-- the alert object lives inside my alert service.  It is set from the controller code
+        and I use it here from HTML-->
+<div 
+    class="alert-{{alertObj.type}} animated main-alert" 
+    ng-class="{'flipInY': alertObj.show, 'flipOutY': !alertObj.show, 'alert-hidden' : !alertObj.hasBeenShown}"
+    ><strong>{{alertObj.title}}</strong> {{alertObj.message}}
+</div>

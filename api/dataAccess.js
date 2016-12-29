@@ -30,9 +30,15 @@
         });
     }
 
+    function comparePasswords(plainPassword, hashedPassword, callback) {
+        bcrypt.compare(plainPassword, hashedPassword, callback);
+    }
+
+
     function createUser(user, callback) {
 
         bcrypt.genSalt(10, function (err, salt) {
+
             if (err)
                 throw err; // salt generating error
 
@@ -48,15 +54,33 @@
                         throw err;
                     }
 
+                    // I could be returning whatever the DB is giving me, but I only want to return certain fields, 
+                    // not potentially a ton of fields.  So I am creating a User object
                     callback(null, new User(result.ops[0].email, result.ops[0].password, result.ops[0]._id));
                 });
             });
         });
     }
 
+    function findUser(email, callback) {
+        console.log("looking for: " + email);
+
+        collection.findOne({email: email}, function(err, result) {
+            if (err) {
+                throw err;
+            }
+
+            // I could be returning whatever the DB is giving me, but I only want to return certain fields, 
+            // not potentially a ton of fields.  So I am creating a User object
+            callback(null, result ? new User(result.email, result.password, result._id) : null);
+        });
+    }
+
     module.exports = {
         connectDB: connectDB,
         createUser: createUser,
+        findUser: findUser,
+        comparePasswords: comparePasswords,
         closeConnection: closeConnection
     }
 }());

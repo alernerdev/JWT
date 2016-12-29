@@ -6,9 +6,9 @@
         function request(config) {
             var token = authTokenFactory.getToken();
             if (token) {
-                console.log("placing token on the header");
-                config.headers.Authorization = 'Bearer ' + token;
-            }
+                // 'authorization' header here must match 'authorization' on the backend side
+                config.headers.authorization = 'Bearer ' + token;
+             }
 
             return config;
         }

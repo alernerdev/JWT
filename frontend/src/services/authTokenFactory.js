@@ -10,12 +10,15 @@
         function setToken(token) {
             cachedToken = token;
             storage.setItem(userTokenStr, token);
+
+            console.log("from authTokenFactory, setting token " + cachedToken);
         };
 
         function getToken() {
             if (!cachedToken)
                 cachedToken = storage.getItem(userTokenStr);
 
+            console.log("from authTokenFactory, returning token " + cachedToken);
             return cachedToken;
         };
 

@@ -9,6 +9,8 @@
     var User = require('./user');
     var jwt = require('./services/jwt');
 
+    var mySecret = "my very secret";
+
     var app = express();
     app.use(bodyParser.json());
 
@@ -21,42 +23,81 @@
     });
 
     /////////
-    app.post('/register', function (req, res) {
-        var user = {email: req.body.email, password: req.body.password};
-
-        dataAccess.createUser(user, function(err, u) {
-            var payload = {
-                iss: req.hostname,
-                sub: u.id // subject
-            }
-            var token = jwt.encode(payload, "my very secret");
-
-            // toJSON on my User object strips out the password
-            res.status(200).send({
-                user: u.toJSON(),
-                token: token
-            });
-        });
-    });
+    app.post('/register', registerHandler);
+    app.post('/login', loginHandler);
+    app.get('/jobs', getJobsHandler);
 
     /////////
+    // post /register
+    function registerHandler(req, res) {
+        var user = { email: req.body.email, password: req.body.password };
+
+        dataAccess.createUser(user, function (err, u) {
+            if (err)
+                return res.status(401).send({ message: 'Failed to create account' });
+
+            createAndSendToken(req.hostname, u, res);
+        });
+    }
+
+    // post /login
+    function loginHandler(req, res) {
+        var user = { email: req.body.email, password: req.body.password };
+
+        dataAccess.findUser(user.email, function (err, u) {
+            if (err)
+                throw err;
+
+            // cant find user
+            if (!u)
+                return res.status(401).send({ message: 'Wrong email/password' });
+
+            dataAccess.comparePasswords(user.password, u.password, function (err, isMatch) {
+                if (err)
+                    throw err;
+
+                if (!isMatch)
+                    return res.status(401).send({ message: 'Wrong email/password' });
+
+                createAndSendToken(req.hostname, u, res)
+            });
+        });
+    }
+
+
     var jobs = [
         'Cook', 'SuperHero', 'Programmer', 'Toast Inspector'
     ];
-    app.get('/jobs', function(req, res) {
+    function getJobsHandler(req, res) {
         // this is a secured resource, so check if there is a token
-        console.log("received request for jobs on the server side");
-        for (var i = 0; i<req.headers.length; i++)
-            console.log(req.headers[i]);
-
-        if (!req.headers.Authorization) {
-            console.log("there is no token");
-            return res.status(401).send({message: 'You are not authorized to view jobs.  Please login'});
+        if (!req.headers.authorization) {
+            return res.status(401).send({ message: 'You are not authorized to view jobs.  Please login' });
         }
 
-        console.log("there IS a token!!!!");
+        // the layout is: 'Bearer tokenstringvalue'
+        var token = req.headers.authorization.split(' ')[1];
+        var payload = jwt.decode(token, mySecret);
+        if (!payload.sub) {
+            // missing email piece ?
+            return res.status(401).send({ message: 'You are not authorized to view jobs' });
+        }
+
+
         res.json(jobs);
-    });
+    };
+
+
+    function createAndSendToken(hostname, user, res) {
+        var payload = {
+            iss: hostname,
+            sub: user.id // subject
+        }
+        var token = jwt.encode(payload, mySecret);
+
+        // toJSON on my User object strips out the password
+        res.status(200).send({ user: user.toJSON(), token: token });
+    }
+
 
     ////////
     var server = app.listen(4000, function () {
@@ -67,4 +108,4 @@
     dataAccess.connectDB('mongodb://localhost/jwt', function () {
         console.log('database is ready to be used');
     });
-}());
+} ());
