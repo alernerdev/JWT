@@ -18,7 +18,6 @@
             if (!cachedToken)
                 cachedToken = storage.getItem(userTokenStr);
 
-            console.log("from authTokenFactory, returning token " + cachedToken);
             return cachedToken;
         };
 

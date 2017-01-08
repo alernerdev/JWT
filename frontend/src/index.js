@@ -23,6 +23,7 @@ import './controllers/loginCtrl.js';
 
 import './services/alertSvc.js';
 import './services/authTokenFactory.js';
+import './services/authSvc.js';
 import './services/authInterceptorFactory.js';
 
 
